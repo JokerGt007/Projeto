@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animais Aquáticos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url("https://c.wallhere.com/photos/6c/1d/nature-243393.jpg!d");
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 250vh;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4682B4; 
+            color: #FFF;
+            text-align: center;
+            padding: 20px 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #FFF;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        h1 {
+            text-align: center;
+            color: #000000;
+            font-size: 36px;
+        }
+        p {
+            text-align: center;
+            color: #000000; 
+            font-size: 20px;
+        }
+        .highlight {
+            background-color: #00a2ff52; 
+            padding: 20px;
+            text-align: center;
+            margin: 20px;
+            border-radius: 10px;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+        footer {
+            color: #FFF;
+            text-align: center;
+            padding: 10px;
+        }
+        .table-container {
+            background-color: #00a2ff52; /* Cor de água */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            background-color: #FFF; /* Cor de uma mesa branca */
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #4682B4; /* Azul-ço da cor do oceano */
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #4682B4; /* Azul-ço da cor do oceano */
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Página Inicial</a></li>
+                <li><a href="/consulta/">Consulta</a></li>
+                <li><a href="/quiz/">Quiz</a></li>
+                <li><a href="/admin/">Adm</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Bem-vindo à Página de Animais Aquáticos</h1>
+    <p>Explore o fascinante mundo dos animais aquáticos, aprenda mais sobre seus incríveis ecossistemas e saiba sobre suas espécies e tipos.</p>
+
+    <div class="table-container">
+        <h2 class="mb-4">Tabela de Ecossistemas</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Tamanho em K²</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Animais: Nome - Idade - Raça - Espécie</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for ecossistema in ecossistemas %}
+                <tr>
+                    <td>{{ ecossistema.id_eco }}</td>
+                    <td>{{ ecossistema.nome }}</td>
+                    <td>{{ ecossistema.tamanho }}</td>
+                    <td>{{ ecossistema.tipo }}</td>
+                    <td>
+                        <ul>
+                            {% for animal in animais %}
+                                {{ animal.nome }} - {{ animal.idade }} - {{ animal.raca}} - {{ animal.especie }}<br>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+    </div>
+
+    <!-- Incluindo jQuery e Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
