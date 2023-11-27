@@ -64,20 +64,22 @@
             border-radius: 10px;
         }
         table {
-            width: 100%;
-            background-color: #FFF; /* Cor de uma mesa branca */
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #4682B4; /* Azul-ço da cor do oceano */
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #4682B4; /* Azul-ço da cor do oceano */
-            color: #FFF;
-        }
-    </style>
+        width: 100%;
+        background-color: #0A4861; /* Alterando para um azul mais escuro */
+        border-collapse: collapse;
+        color: #0ce5f5; /* Mudando a cor do texto para branco */
+    }
+
+    th, td {
+        border: 1px solid #4682B4; /* Azul-ço da cor do oceano */
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #000000; /* Outra tonalidade de azul para o cabeçalho */
+    }
+</style>
 </head>
 <body>
     <header>
@@ -108,23 +110,23 @@
             </thead>
             <tbody>
                 {% for ecossistema in ecossistemas %}
-                <tr>
-                    <td>{{ ecossistema.id_eco }}</td>
-                    <td>{{ ecossistema.nome }}</td>
-                    <td>{{ ecossistema.tamanho }}</td>
-                    <td>{{ ecossistema.tipo }}</td>
-                    <td>
-                        <ul>
-                            {% for animal in animais %}
-                                {{ animal.nome }} - {{ animal.idade }} - {{ animal.raca}} - {{ animal.especie }}<br>
-                            {% endfor %}
-                        </ul>
-                    </td>
-                    
-                </tr>
+                    <tr>
+                        <td>{{ ecossistema.id_eco }}</td>
+                        <td>{{ ecossistema.nome }}</td>
+                        <td>{{ ecossistema.tamanho }}</td>
+                        <td>{{ ecossistema.tipo }}</td>
+                        <td>
+                            <ul>
+                                {% for animal in ecossistema.animais_set.all %}
+                                    {{ animal.nome }} - {{ animal.idade }} - {{ animal.raca }} - {{ animal.especie }}<br>
+                                {% empty %}
+                                    Nenhum animal neste ecossistema<br>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
                 {% endfor %}
-            </tbody>
-            
+            </tbody>                  
         </table>
     </div>
 
